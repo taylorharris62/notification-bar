@@ -66,8 +66,53 @@ function snb_general_settings_page () {
     </div><!-- /.wrap -->
 
 <?php
+}
 
+// Creates settings for plugin
 
+add_action( 'admin_init', 'snb_initialize_settings' );
+function snb_initialize_settings() {
+
+    add_settings_section (
+        'general_section' ,
+        __( 'General Settings', 'notification-bar' ),
+        'general_settings_callback' ,
+        'snb_general_settings'
+    );
+
+    add_settings_field(
+        'notification_text' ,
+        __( 'Notification Bar', 'notification-bar'),
+        'text_input_callback' ,
+        'snb_general_settings' ,
+        'general_section' ,
+        array(
+            'label_for' => 'notification_text',
+            'option_group' => 'snb_general_settings' ,
+            'option_id' => 'notification_text'
+
+            )
+        );
+
+    add_settings_field(
+        'display_location' ,
+        __( 'Where will the notification bar display?' , 'notification-bar' ),
+        'radio_input_callback' ,
+        'snb_genreal_settings' ,
+        'general_section' ,
+        array(
+            'label_for' => 'display_location' ,
+            'option_group' => 'snb_general_settings' ,
+            'option_id' => 'display_location',
+            'option_description' => 'Display notification bar on the bottom of site',
+            'radio_options' => array(
+                'display_none' => 'Do not display the notification bar' ,
+                'display_top' => 'Display notification bar on top of site' ,
+                'display_bottom' => 'Display notification bar on the bottom of site' ,
+                )
+            )
+            );
+   
 }
 
 >
