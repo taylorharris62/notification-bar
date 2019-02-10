@@ -42,4 +42,32 @@ function snb_general_settings_page() {
 
 }
 
+// Creates Settings Page
+function snb_general_settings_page () {
+    ?>
+    <!---Create a header in the default WP wrap container -->
+    <div class="wrap">
+
+        <h2><?php_e( 'Notification Bar Settings', 'notification-bar'); ?></h2>
+
+        <form method="post" action="options.php">
+
+                <?php
+
+                settings_fields( 'snb_general_settings' );
+                do_settings_sections( 'snb_general_settings' );
+
+                //Form submit button
+                submit_button();
+                ?>
+
+        </form>
+
+    </div><!-- /.wrap -->
+
+<?php
+
+
+}
+
 >
